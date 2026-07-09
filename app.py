@@ -1,6 +1,8 @@
 # import the material like a carpenter collect the tools that they use in building anything
 import streamlit as st
 import pandas as pd
+# connecting the function
+from analysis.analyzer import analyze_dataset
 
 #configuthe the page
 st.set_page_config(page_title="Universal Data Analyzer")
@@ -17,9 +19,18 @@ uploaded_file=st.file_uploader("Choose a CSV file",type=["csv"])
 
 #user validation
 if uploaded_file is not None:
-    st.success("File uploaded successfully!")
 
-#read the file and display the data
-    df=pd.read_csv(uploaded_file)
-    st.write("Data Preview:")
-    st.dataframe(df)
+    st.success("File uploaded successfully!")
+        
+    df=pd.read_csv(uploaded_file) 
+
+    st.subheader("Dataset preview:")
+
+    st.dataframe(df.head(5))
+    
+    analysis_report=analyze_dataset(df)
+
+    st.write(analysis_report)
+
+
+
