@@ -7,7 +7,7 @@ def generate_validation(df):
  validation["missing_values","missing_values_percentage"]=missing_values(df)
  validation["duplicate_rows","duplicate_rows_percentage"]=duplicate_rows(df)
  validation["outliers"]=outliers(df)
- validation["data_types"]=df.dtypes.astype(str).to_dict()
+ validation["data_types"]=data_types(df)
 
 
 
