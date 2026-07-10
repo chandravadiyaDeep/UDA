@@ -1,3 +1,7 @@
+
+
+
+
 def generate_summary(df):
     summary = {}
     summary["rows"] = df.shape[0]

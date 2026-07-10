@@ -30,7 +30,12 @@ if uploaded_file is not None:
     
     analysis_report=analyze_dataset(df)
 
-    st.write(analysis_report)
+    st.subheader("Dataset Summary:")
 
+    summary=analysis_report["summary"]
 
-
+    st.write("Rows:",summary["rows"])
+    st.write("Columns:",summary["columns"])
+    st.write("Shape:",summary["shape"])
+    st.write("Column Names:",summary["column_names"])
+    st.write("Data Types:",summary["data_types"])
