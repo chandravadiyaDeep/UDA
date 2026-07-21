@@ -1,3 +1,5 @@
+
+
 def generate_statistics(df):
     statistics = {}
     statistics["mean"] = mean(df)
@@ -16,8 +18,10 @@ def generate_statistics(df):
     statistics["unique_values"] = df.nunique()
     statistics["most_frequent_values"] = df.mode(numeric_only=True).iloc[0] if not df.mode(numeric_only=True).empty else None
     statistics["missing_values"] = df.isnull().sum()
-    statistics["frequency_distribution"] = df.apply(lambda x: x.value_counts()).fillna(0)
+
     return statistics
+
+
  
 def mean(df):
     mean_values = df.mean(numeric_only=True)

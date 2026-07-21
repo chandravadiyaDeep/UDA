@@ -30,12 +30,13 @@ if uploaded_file is not None:
     
     analysis_report=analyze_dataset(df)
 
-    st.subheader("Dataset Summary:")
-
-    summary=analysis_report["summary"]
-
-    st.write("Rows:",summary["rows"])
-    st.write("Columns:",summary["columns"])
-    st.write("Shape:",summary["shape"])
-    st.write("Column Names:",summary["column_names"])
-    st.write("Data Types:",summary["data_types"])
+    # summary section 
+    st.subheader("📋Dataset Summary:")
+    st.json(analysis_report["summary"])
+    #validation section
+    st.subheader("✅Dataset Validation:")
+    st.json(analysis_report["validation"])
+    # statistics section
+    st.subheader("📈Dataset Statistics:")
+    st.json(analysis_report["statistics"])
+    
