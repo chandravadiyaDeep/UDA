@@ -8,5 +8,5 @@ def analyze_dataset(df):
     analysis_report["summary"] = generate_summary(df)
     analysis_report["validation"] = generate_validation(df)
     analysis_report["statistics"] = generate_statistics(df)
-    analysis_report["data_insights"] = generate_data_insights(df)
+    analysis_report["data_insights"] = generate_data_insights(analysis_report)
     return analysis_report
