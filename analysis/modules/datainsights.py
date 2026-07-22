@@ -57,11 +57,31 @@ def datatype_insights(summary):
     #insights
 
     insights.append(
-        f"{numerical_percent}% of the features are numerical."
+        f"✅{numerical_percent}% of the features are numerical."
     )
     insights.append(
-        f"{categorical_percent}% of the features are numerical."
+        f"✅{categorical_percent}% of the features are numerical."
     )
-    
+
+    #mixed datasets
+    if numerical > 0 and categorical > 0:
+        insights.append(
+            "💡 Datasets contains both numerical and categorical features."
+        )
+    #mostly numerical
+    if numerical_percent >= 70:
+        insights.append(
+            "💡 Most features are numerical."
+        )
+     #boolean
+    if boolean > 0:
+        insights.append(
+            f"💡 Dataset contains {boolean} boolean feature(s)."
+        )
+    if datetime > 0:
+        insights.append(
+            f"💡 Dataset contains {datetime} datetime feature(s)."
+        )          
+    return insights
 
     
