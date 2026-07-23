@@ -2,7 +2,7 @@
 from analysis.component.dataset_summary import generate_summary
 from analysis.component.dataset_validator import generate_validation
 from analysis.component.dataset_statistics import generate_statistics
-from modules import generate_data_insights
+from analysis.modules.datainsights import generate_data_insights
 def analyze_dataset(df):
     analysis_report = {}
     analysis_report["summary"] = generate_summary(df)

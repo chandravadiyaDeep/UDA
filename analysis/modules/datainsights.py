@@ -37,7 +37,7 @@ def datatype_insights(summary):
             "int8",
             "float8",
         ]:
-            numerrical += 1
+            numerical += 1
          #boolean
         elif dtype == "bool":
             boolean+=1
