@@ -39,4 +39,7 @@ if uploaded_file is not None:
     # statistics section
     st.subheader("📈Dataset Statistics:")
     st.json(analysis_report["statistics"])
+    #data insights
+    st.subheader("📈Dataset insights:")
+    st.json(analysis_report["data_insights"])
     
