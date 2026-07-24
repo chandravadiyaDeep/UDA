@@ -8,9 +8,9 @@ def generate_data_insights(analysis_report,df):
     insights = {}
 
     insights["datatype"]=datatype_insights(summary)
-    insights["feature_detection"]=feature_detection(df,summary,validation,statistics)
-    insights["ml_readness"]=ml_readiness(df,summary,validation,statistics)
-    insights["quality_score"]=quality_score(df, summary, validation, statistics)
+    insights["feature_detection"]=feature_detection(df,summary)
+    insights["ml_readness"]=ml_readiness(df,summary,validation)
+    insights["quality_score"]=quality_score(df, summary, validation)
 
     return insights
         
