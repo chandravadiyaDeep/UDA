@@ -1,6 +1,6 @@
 from analysis.modules.preprocessing.pipeline import Pipeline
 
-pipeline = Pipe
+pipeline = Pipeline()
 
 print("=" * 60)
 print("Empty Pipeline")
