@@ -20,7 +20,7 @@ class   Pipeline:
         self.steps.append(step)
         self.next_id +=1
 
-    def remove_steps(self,step_id):
+    def remove_step(self,step_id):
 
         self.steps = [
             step
