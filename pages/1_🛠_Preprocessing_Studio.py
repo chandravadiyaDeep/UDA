@@ -1,4 +1,12 @@
 import streamlit as st
+from analysis.modules.preprocessing.pipeline import Pipeline
+
+# -----------------------------
+# Initialize Pipeline
+# -----------------------------
+
+if "pipeline" not in st.session_state:
+    st.session_state.pipeline = Pipeline()
 
 st.set_page_config(
     page_title="Preprocessing Studio",
@@ -38,7 +46,42 @@ with left:
 
     st.button("Features Selection",use_container_width=True)
 
-    st.button("Data Type",use_conatainer_width=True)
+    st.button("Data Type",use_container_width=True)
+
+    if st.session_state.get("current_operation") =="missing_values":
+
+        st.divider()
+
+        st.subheader("Missing Value Configuration")
+
+        column=st.selectbox(
+            "Select Column",
+            [
+                "Age",
+                "Fare",
+                "Cabin"
+            ]
+        )
+
+        method=st.selectbox(
+            "Method",
+            [
+                "Mean",
+                "Median",
+                "Mode",
+                "Drop Rows"
+            ]
+        )
+
+        if st.button("Add To Pipeline"):
+
+            st.session_state.pipeline.add_step(
+                category="Missing Values",
+                column=column,
+                method=method
+            )
+
+            st.success("Step Added Successfully")
 
 #center panel
 with center:
