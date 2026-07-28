@@ -1,4 +1,11 @@
 import streamlit as st
+
+st.set_page_config(
+    page_title="Preprocessing Studio",
+    page_icon="🛠",
+    layout="wide"
+)
+
 from analysis.modules.preprocessing.pipeline import Pipeline
 
 # -----------------------------
@@ -8,11 +15,6 @@ from analysis.modules.preprocessing.pipeline import Pipeline
 if "pipeline" not in st.session_state:
     st.session_state.pipeline = Pipeline()
 
-st.set_page_config(
-    page_title="Preprocessing Studio",
-    page_icon="🛠",
-    layout="wide"
-)
 
 st.title("🛠 Data Preprocessing Studio")
 
@@ -34,7 +36,10 @@ left, center , right=st.columns([1,2,1])
 with left:
     st.subheader("⚙ Operations")
 
-    st.button("Missing Values",use_container_width=True)
+    if st.button("Missing Values", use_container_width=True):
+        st.write("Button Clicked!")
+        st.session_state.current_operation = "missing_values"
+        st.write(st.session_state.current_operation)
 
     st.button("Encoding",use_container_width=True)
 
@@ -48,40 +53,21 @@ with left:
 
     st.button("Data Type",use_container_width=True)
 
-    if st.session_state.get("current_operation") =="missing_values":
+    st.write("Current Operation:", st.session_state.get("current_operation"))
 
-        st.divider()
+if st.session_state.get("current_operation") == "missing_values":
 
-        st.subheader("Missing Value Configuration")
+    st.success("Configuration Opened ✅")
 
-        column=st.selectbox(
-            "Select Column",
-            [
-                "Age",
-                "Fare",
-                "Cabin"
-            ]
-        )
+    st.selectbox(
+        "Select Column",
+        ["Age", "Fare", "Cabin"]
+    )
 
-        method=st.selectbox(
-            "Method",
-            [
-                "Mean",
-                "Median",
-                "Mode",
-                "Drop Rows"
-            ]
-        )
-
-        if st.button("Add To Pipeline"):
-
-            st.session_state.pipeline.add_step(
-                category="Missing Values",
-                column=column,
-                method=method
-            )
-
-            st.success("Step Added Successfully")
+    st.selectbox(
+        "Method",
+        ["Mean", "Median", "Mode"]
+    )
 
 #center panel
 with center:
