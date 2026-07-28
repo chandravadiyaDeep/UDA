@@ -36,7 +36,7 @@ with left:
 
     st.button("Duplicates",use_container_width=True)
 
-    st.button("Features Selection",use_conatiner_width=True)
+    st.button("Features Selection",use_container_width=True)
 
     st.button("Data Type",use_conatainer_width=True)
 
