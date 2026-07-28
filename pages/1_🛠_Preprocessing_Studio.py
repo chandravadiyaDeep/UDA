@@ -40,3 +40,33 @@ with left:
 
     st.button("Data Type",use_conatainer_width=True)
 
+#center panel
+with center:
+
+    st.subheader("🧩 Pipeline")
+
+    st.info("No preprocessing steps added.")
+
+#right panel
+with right:
+
+    st.subheader("📊 Dataset Information")
+
+    st.metric("Rows","-")
+
+    st.metric("Columns","-")
+
+    st.metric("Quality Score","-")
+
+st.divider()
+
+#run pipeline
+
+st.button(
+    "▶ Run Pipeline",
+    use_container_width=True,
+    type="primary" 
+)
+
+            
+
