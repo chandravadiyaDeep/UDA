@@ -8,4 +8,4 @@ st.set_page_config(
 
 st.title("🛠 Data Preprocessing Studio")
 
-st.write("Welcome to the preprocessing ")
+st.write("Welcome to the preprocessing pipeline")
