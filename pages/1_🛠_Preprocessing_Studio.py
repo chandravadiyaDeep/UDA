@@ -47,8 +47,6 @@ if st.button(
     processed_df = execute_pipeline(df,st.session_state.pipeline)
     st.session_state.processed_df = processed_df
     st.success("Pipeline executed successfully!")
-    st.write(type(processed_df))
-    st.write(processed_df)
     
     if "processed_df" in st.session_state:
         st.subheader("Processed Dataset Preview")

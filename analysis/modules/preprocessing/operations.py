@@ -50,13 +50,13 @@ OPERATIONS = {
 
 def fill_missing(df,column,method):
 
-    processed_df = df.copy
+    processed_df = df.copy()
 
     #mean
-    if method == "mean":
+    if method == "Mean":
 
         processed_df[column]=processed_df[column].fillna(
-            processed_df[column].mean
+            processed_df[column].mean()
         )
     #median
     elif method == "Median":
@@ -69,6 +69,7 @@ def fill_missing(df,column,method):
         if not mode.empty:
             processed_df[column]=processed_df[column].fillna(mode.iloc[0])
     elif method == "Drop Rows":
+        
 
         processed_df=processed_df.dropna(subset=[column])
     return processed_df                  
