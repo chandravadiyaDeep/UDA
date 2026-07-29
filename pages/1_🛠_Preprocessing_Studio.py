@@ -1,3 +1,5 @@
+   
+
 import streamlit as st
 
 from analysis.modules.preprocessing.pipeline import Pipeline
@@ -11,6 +13,10 @@ st.set_page_config(
     page_icon="🛠",
     layout="wide"
 )
+if "df" not in st.session_state:
+    st.warning("Please upload a dataset first.")
+    st.stop()
+df = st.session_state.df 
 
 if "pipeline" not in st.session_state:
     st.session_state.pipeline = Pipeline()
@@ -25,7 +31,7 @@ with left:
     render_operation_panel()
 
 with center:
-    render_configuration_panel()
+    render_configuration_panel(df)
 
 with right:
     render_pipeline_panel()

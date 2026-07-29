@@ -1,45 +1,93 @@
-# import the material like a carpenter collect the tools that they use in building anything
+# Import the required libraries
 import streamlit as st
 import pandas as pd
-# connecting the function
+
+# Connect the analysis function
 from analysis.analyzer import analyze_dataset
 
-#configuthe the page
+# Configure the page
 st.set_page_config(page_title="Universal Data Analyzer")
 
-#title of the page
+# Title
 st.title("📊 Universal Data Analyzer")
 
-#description
-st.write("upload your data file and begin the analysis.")
+# Description
+st.write("Upload your data file and begin the analysis.")
 
-#file uploader
-# this upload_file is the variable bridge between ui and data engine
-uploaded_file=st.file_uploader("Choose a CSV file",type=["csv"])
+# ==========================
+# Stage 1 : Upload Dataset
+# ==========================
 
-#user validation
+uploaded_file = st.file_uploader(
+    "Choose a CSV file",
+    type=["csv"]
+)
+
+# If user uploads a new dataset
 if uploaded_file is not None:
 
-    st.success("File uploaded successfully!")
-        
-    df=pd.read_csv(uploaded_file) 
+    df = pd.read_csv(uploaded_file)
 
-    st.subheader("Dataset preview:")
+    # Store dataset in Session State
+    st.session_state.df = df
 
-    st.dataframe(df.head(5))
-    
-    analysis_report=analyze_dataset(df)
 
-    # summary section 
-    st.subheader("📋Dataset Summary:")
-    st.json(analysis_report["summary"])
-    #validation section
-    st.subheader("✅Dataset Validation:")
-    st.json(analysis_report["validation"])
-    # statistics section
-    st.subheader("📈Dataset Statistics:")
-    st.json(analysis_report["statistics"])
-    #data insights
-    st.subheader("📈Dataset insights:")
-    st.json(analysis_report["data_insights"])
-    
+# ==========================
+# Stage 2 : Check Dataset
+# ==========================
+
+if "df" not in st.session_state:
+
+    st.info("Please upload a CSV file to begin.")
+
+    st.stop()
+
+
+# ==========================
+# Stage 3 : Use Session Data
+# ==========================
+
+df = st.session_state.df
+
+# Success Message
+st.success("Dataset Loaded Successfully ✅")
+
+# Dataset Preview
+st.subheader("📄 Dataset Preview")
+
+st.dataframe(df.head(5))
+
+# Analyze Dataset
+analysis_report = analyze_dataset(df)
+
+# ==========================
+# Dataset Summary
+# ==========================
+
+st.subheader("📋 Dataset Summary")
+
+st.json(analysis_report["summary"])
+
+# ==========================
+# Dataset Validation
+# ==========================
+
+st.subheader("✅ Dataset Validation")
+
+st.json(analysis_report["validation"])
+
+# ==========================
+# Dataset Statistics
+# ==========================
+
+st.subheader("📈 Dataset Statistics")
+
+st.json(analysis_report["statistics"])
+
+# ==========================
+# Dataset Insights
+# ==========================
+
+st.subheader("💡 Dataset Insights")
+
+st.json(analysis_report["data_insights"])

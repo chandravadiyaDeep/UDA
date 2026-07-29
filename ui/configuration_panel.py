@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-def render_configuration_panel():
+def render_configuration_panel(df):
 
     operation = st.session_state.get("current_operation")
 
@@ -16,15 +16,7 @@ def render_configuration_panel():
     st.write(f"Current Operation : **{operation}**")
 
     if operation == "Missing Values":
-
-        column = st.selectbox(
-            "Column",
-            [
-                "Age",
-                "Fare",
-                "Cabin"
-            ]
-        )
+        column = st.selectbox("Column",df.columns.tolist())
 
         method = st.selectbox(
             "Method",
