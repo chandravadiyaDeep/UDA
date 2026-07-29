@@ -1,4 +1,4 @@
-   
+from analysis.modules.preprocessing.executor import execute_pipeline    
 
 import streamlit as st
 
@@ -38,8 +38,29 @@ with right:
 
 st.divider()
 
-st.button(
+if st.button(
     "▶ Run Pipeline",
     type="primary",
     use_container_width=True
-)
+):
+
+    processed_df = execute_pipeline(df,st.session_state.pipeline)
+    st.session_state.processed_df = processed_df
+    st.success("Pipeline executed successfully!")
+
+if "processed_df" in st.session_state:
+
+    st.subheader("Processed Dataset Preview")
+    st.dataframe(st.session_state.processed_df.head())
+
+    csv=st.session_state.processed_df.to_csv(index=False)
+
+    st.download_button(
+        label="📥 Download Clean Dataset",
+
+        data=csv,
+        file_name="cleaned.csv"
+        mine="text/csv"
+    )    
+
+    
