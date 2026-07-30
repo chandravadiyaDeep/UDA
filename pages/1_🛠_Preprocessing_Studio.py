@@ -53,13 +53,16 @@ if st.button(
         if "processed_df" not in st.session_state or st.session_state.processed_df is None:
             st.warning("Please run the preprocessing pipeline first.")
             st.stop()
-            st.dataframe(st.session_state.processed_df.head())
+
+        st.write(type(st.session_state.processed_df))
+        st.write(st.session_state.processed_df.shape)
         
-            csv=st.session_state.processed_df.to_csv(index=False)
+        st.dataframe(st.session_state.processed_df.head())
         
-            st.download_button(
+        csv=st.session_state.processed_df.to_csv(index=False)
+        
+        st.download_button(
                 label="📥 Download Clean Dataset",
-        
                 data=csv,
                 file_name="cleaned.csv",
                 mine="text/csv"
