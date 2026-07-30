@@ -45,14 +45,14 @@ def render_configuration_panel(df):
             )
 
             st.success("Step Added Successfully")
-    elif operation == "encoding":
+    elif operation == "Encoding":
 
-    column = st.selectbox(
+     column = st.selectbox(
         "Column",
         categorical_columns
-    )
+      )
 
-    method = st.selectbox(
+     method = st.selectbox(
         "Method",
         [
             "One Hot",
@@ -60,12 +60,10 @@ def render_configuration_panel(df):
             "Ordinal",
             "Frequency"
         ]
-    )
+       )
 
-    if st.button(
-        "Add Step",
-        use_container_width=True
-    ):
+     if st.button("Add Step",use_container_width=True):
+
 
         st.session_state.pipeline.add_step(
 

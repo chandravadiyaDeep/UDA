@@ -87,10 +87,7 @@ def label_encode(df,column):
     return processed_df
 def ordinal_encode(df,column):
     processed_df=df.copy()
-    categories=sorted(processed_df[column]
-                      .dropna()
-                      .unique()
-                      )
+    categories=sorted(processed_df[column].dropna().unique())
     mapping={
         category : index
         for index,category in enumerate(categories)
