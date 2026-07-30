@@ -56,7 +56,7 @@ if st.button(
 
         st.write(type(st.session_state.processed_df))
         st.write(st.session_state.processed_df.shape)
-        
+
         st.dataframe(st.session_state.processed_df.head())
         
         csv=st.session_state.processed_df.to_csv(index=False)
@@ -65,7 +65,7 @@ if st.button(
                 label="📥 Download Clean Dataset",
                 data=csv,
                 file_name="cleaned.csv",
-                mine="text/csv"
+                mime="text/csv"
             )
         
 
