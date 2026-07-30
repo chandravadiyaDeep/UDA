@@ -20,5 +20,6 @@ def execute_pipeline(df, pipeline):
             elif step["method"] == "Ordinal":
                 processed_df=ordinal_encode(processed_df,column=step["column"])
             elif step["method"] == "Frequency":
-                processed_df=frequency_encode(processed_df,column=step["column"])      
+                processed_df=frequency_encode(processed_df,column=step["column"])
+                      
     return processed_df        
